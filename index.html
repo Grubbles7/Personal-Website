@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
+  <title>Home | My Portfolio</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -12,19 +12,31 @@
     <nav>
       <h1 class="logo">MyPortfolio</h1>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="blog.html">Blog</a></li>
       </ul>
+      <!-- 🌙 Dark Mode Toggle -->
+      <button id="dark-toggle">🌙</button>
     </nav>
   </header>
 
   <!-- 🏠 Hero Section -->
   <section class="hero">
-    <h2>Hi, I’m [Your Name]</h2>
-    <p>Welcome to my portfolio and blog where I share my projects and thoughts.</p>
-    <a href="portfolio.html" class="btn">View My Work</a>
+    <img src="assets/images/profile.jpg" alt="Profile Picture" class="hero-pic" />
+    <h2>// x (Your Name)</h2>
+    <p>// x (Short tagline, e.g. "Developer | Designer | Writer")</p>
+    <div class="hero-buttons">
+      <a href="portfolio.html" class="btn">View My Work</a>
+      <a href="about.html" class="btn btn-outline">About Me</a>
+    </div>
+    <!-- 🔗 Social Links -->
+    <div class="social-links">
+      <a href="// x (GitHub link)" target="_blank">🐙</a>
+      <a href="// x (LinkedIn link)" target="_blank">💼</a>
+      <a href="// x (Twitter/X link)" target="_blank">🐦</a>
+    </div>
   </section>
 
   <!-- 📌 Footer -->
