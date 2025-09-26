@@ -1,23 +1,25 @@
 // Dark Mode Toggle
 const toggleBtn = document.getElementById("dark-toggle");
-toggleBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
 
-  // Save preference
-  if (document.body.classList.contains("dark")) {
-    localStorage.setItem("theme", "dark");
-    toggleBtn.textContent = "☀️";
+function applyTheme(theme) {
+  if (theme === "dark") {
+    document.body.classList.add("dark");
+    toggleBtn.textContent = "☀️"; // sun icon
   } else {
-    localStorage.setItem("theme", "light");
-    toggleBtn.textContent = "🌙";
+    document.body.classList.remove("dark");
+    toggleBtn.textContent = "🌙"; // moon icon
   }
+}
+
+// Handle click
+toggleBtn.addEventListener("click", () => {
+  const isDark = document.body.classList.toggle("dark");
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+  applyTheme(isDark ? "dark" : "light");
 });
 
 // Apply saved theme on load
-window.onload = () => {
-  const theme = localStorage.getItem("theme");
-  if (theme === "dark") {
-    document.body.classList.add("dark");
-    toggleBtn.textContent = "☀️";
-  }
-};
+window.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("theme") || "light";
+  applyTheme(savedTheme);
+});
