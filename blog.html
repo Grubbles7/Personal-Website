@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jack McGrath's Tech Blog - Tutorials, Notes & Thoughts" />
+  <title>Jack McGrath | Blog</title>
+  <style>
+/* [USE SAME BASE STYLES] */
+:root {
+  --bg: #f4f6f8;
+  --fg: #1e1e1e;
+  --accent-1: #007acc;
+  --accent-2: #00ffd5;
+  --accent-3: #ff6b6b;
+  --accent-4: #ffd93d;
+  --accent-5: #a855f7;
+  --accent-6: #10b981;
+  --muted: #666;
+  --border: #e0e0e0;
+  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Courier New", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --fg: #e6e6e6;
+    --accent-1: #0098ff;
+    --accent-2: #00ffd5;
+    --accent-3: #ff6b6b;
+    --accent-4: #ffd93d;
+    --accent-5: #a855f7;
+    --accent-6: #10b981;
+    --muted: #9aa0a6;
+    --border: #1f1f1f;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+header {
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-5));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  font-family: var(--font-mono);
+}
+
+.nav-links a {
+  color: var(--fg);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::before {
+  content: "[ ";
+  color: var(--muted);
+}
+
+.nav-links a::after {
+  content: " ]";
+  color: var(--muted);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent-2);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--fg);
+  font-size: 1.5rem;
+  cursor: pointer;
+  font-family: var(--font-mono);
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    flex-direction: column;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+.ascii-box {
+  font-family: var(--font-mono);
+  white-space: pre;
+  margin: 2rem 0;
+  font-size: 0.85rem;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.ascii-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.color-1 { color: var(--accent-1); }
+.color-2 { color: var(--accent-2); }
+.color-3 { color: var(--accent-3); }
+.color-4 { color: var(--accent-4); }
+.color-5 { color: var(--accent-5); }
+.color-6 { color: var(--accent-6); }
+
+section {
+  margin: 3rem 0;
+}
+
+section h2 {
+  font-family: var(--font-mono);
+  margin-bottom: 1rem;
+  color: var(--accent-1);
+  font-size: 1.8rem;
+}
+
+section p {
+  max-width: 70ch;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.placeholder-note {
+  background: var(--border);
+  border-left: 4px solid var(--accent-4);
+  padding: 1rem;
+  margin: 1rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--accent-4);
+}
+
+/* Blog Posts List */
+.blog-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.blog-post {
+  border: 2px solid var(--border);
+  padding: 2rem;
+  transition: all 0.3s ease;
+  background: var(--bg);
+}
+
+.blog-post:hover {
+  border-color: var(--accent-2);
+  transform: translateX(10px);
+}
+
+.blog-meta {
+  display: flex;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.blog-date {
+  color: var(--accent-4);
+}
+
+.blog-category {
+  color: var(--accent-5);
+  border: 1px solid var(--accent-5);
+  padding: 0.2rem 0.5rem;
+}
+
+.blog-post h3 {
+  font-family: var(--font-mono);
+  color: var(--fg);
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+}
+
+.blog-post h3 a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.blog-post h3 a:hover {
+  color: var(--accent-2);
+}
+
+.blog-excerpt {
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.read-more {
+  font-family: var(--font-mono);
+  color: var(--accent-2);
+  text-decoration: none;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.read-more:hover {
+  color: var(--accent-3);
+}
+
+.read-more::after {
+  content: " →";
+}
+
+/* Categories Filter */
+.categories-filter {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  font-family: var(--font-mono);
+  background: none;
+  border: 2px solid var(--border);
+  color: var(--fg);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-btn:hover,
+.category-btn.active {
+  border-color: var(--accent-2);
+  color: var(--accent-2);
+}
+
+footer {
+  margin-top: 4rem;
+  padding: 1.5rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+@media (max-width: 768px) {
+  .ascii-box {
+    font-size: 0.6rem;
+  }
+  
+  .blog-post {
+    padding: 1.5rem;
+  }
+  
+  .blog-post:hover {
+    transform: translateX(5px);
+  }
+}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <h1 class="logo">JackMcGrath</h1>
+      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section>
+      <pre class="ascii-box color-6">
+ ____  _     ___   ____ 
+| __ )| |   / _ \ / ___|
+|  _ \| |  | | | | |  _ 
+| |_) | |__| |_| | |_| |
+|____/|_____\___/ \____|
+</pre>
+      <h2>&lt; Blog Posts /&gt;</h2>
+      
+      <div class="placeholder-note">
+        ⚠️ PLACEHOLDER: Replace these example posts with your actual blog content. 
+        You can create individual HTML files for each post, or use a static site generator.
+      </div>
+      
+      <p>
+        Technical notes, homelab documentation, tutorials, and occasional musings about tech and life.
+      </p>
+    </section>
+
+    <div class="categories-filter">
+      <button class="category-btn active">All</button>
+      <button class="category-btn">Homelab</button>
+      <button class="category-btn">Tutorials</button>
+      <button class="category-btn">DevOps</button>
+      <button class="category-btn">Personal</button>
+    </div>
+
+    <div class="blog-posts">
+      <!-- Example Post 1 -->
+      <article class="blog-post" data-category="homelab">
+        <div class="blog-meta">
+          <span class="blog-date">2026-01-15</span>
+          <span class="blog-category">Homelab</span>
+        </div>
+        <h3>
+          <a href="#">Setting Up a Proxmox Home Server</a>
+        </h3>
+        <p class="blog-excerpt">
+          [PLACEHOLDER: Write a brief excerpt or summary of your blog post here. 
+          Keep it to 2-3 sentences that give readers an idea of what they'll learn.]
+        </p>
+        <a href="#" class="read-more">Read full post</a>
+      </article>
+
+      <!-- Example Post 2 -->
+      <article class="blog-post" data-category="tutorials">
+        <div class="blog-meta">
+          <span class="blog-date">2026-01-08</span>
+          <span class="blog-category">Tutorials</span>
+        </div>
+        <h3>
+          <a href="#">Docker Compose for Beginners</a>
+        </h3>
+        <p class="blog-excerpt">
+          [PLACEHOLDER: A step-by-step guide to getting started with Docker Compose. 
+          Explain what problem it solves and what readers will accomplish.]
+        </p>
+        <a href="#" class="read-more">Read full post</a>
+      </article>
+
+      <!-- Example Post 3 -->
+      <article class="blog-post" data-category="devops">
+        <div class="blog-meta">
+          <span class="blog-date">2025-12-22</span>
+          <span class="blog-category">DevOps</span>
+        </div>
+        <h3>
+          <a href="#">Automating Backups with Bash Scripts</a>
+        </h3>
+        <p class="blog-excerpt">
+          [PLACEHOLDER: Share your backup automation strategy. What are you backing up? 
+          What tools are you using? What did you learn?]
+        </p>
+        <a href="#" class="read-more">Read full post</a>
+      </article>
+
+      <!-- Example Post 4 -->
+      <article class="blog-post" data-category="personal">
+        <div class="blog-meta">
+          <span class="blog-date">2025-12-10</span>
+          <span class="blog-category">Personal</span>
+        </div>
+        <h3>
+          <a href="#">Why I Started a Homelab</a>
+        </h3>
+        <p class="blog-excerpt">
+          [PLACEHOLDER: Your personal journey into homelabbing. What motivated you? 
+          What have you learned? What advice would you give to others?]
+        </p>
+        <a href="#" class="read-more">Read full post</a>
+      </article>
+
+      <!-- Example Post 5 -->
+      <article class="blog-post" data-category="tutorials">
+        <div class="blog-meta">
+          <span class="blog-date">2025-11-28</span>
+          <span class="blog-category">Tutorials</span>
+        </div>
+        <h3>
+          <a href="#">Setting Up Monitoring with Grafana</a>
+        </h3>
+        <p class="blog-excerpt">
+          [PLACEHOLDER: How to set up system monitoring. What metrics matter? 
+          How to create useful dashboards? Screenshots would be great here!]
+        </p>
+        <a href="#" class="read-more">Read full post</a>
+      </article>
+    </div>
+
+    <section>
+      <pre class="ascii-box color-4">
+┌──────────────────────────────────────┐
+│  More posts coming soon!             │
+│  Subscribe via RSS (coming soon)    │
+└──────────────────────────────────────┘
+</pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Jack McGrath · Built with GitHub Pages</p>
+  </footer>
+
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      if (menuToggle) {
+        menuToggle.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+      }
+
+      const asciiBlocks = document.querySelectorAll(".ascii-box");
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+
+      asciiBlocks.forEach(block => {
+        observer.observe(block);
+      });
+
+      // Category filtering
+      const categoryBtns = document.querySelectorAll(".category-btn");
+      const blogPosts = document.querySelectorAll(".blog-post");
+
+      categoryBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const category = btn.textContent.toLowerCase();
+          
+          categoryBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          blogPosts.forEach(post => {
+            const postCategory = post.dataset.category;
+            if (category === "all" || postCategory === category) {
+              post.style.display = "block";
+            } else {
+              post.style.display = "none";
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
