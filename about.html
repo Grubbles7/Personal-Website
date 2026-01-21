@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About Jack McGrath - Background, Skills & Interests" />
+  <title>Jack McGrath | About</title>
+  <style>
+/* [COPY THE ENTIRE STYLE SECTION FROM index.html - lines 7-228] */
+:root {
+  --bg: #f4f6f8;
+  --fg: #1e1e1e;
+  --accent-1: #007acc;
+  --accent-2: #00ffd5;
+  --accent-3: #ff6b6b;
+  --accent-4: #ffd93d;
+  --accent-5: #a855f7;
+  --accent-6: #10b981;
+  --muted: #666;
+  --border: #e0e0e0;
+  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Courier New", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --fg: #e6e6e6;
+    --accent-1: #0098ff;
+    --accent-2: #00ffd5;
+    --accent-3: #ff6b6b;
+    --accent-4: #ffd93d;
+    --accent-5: #a855f7;
+    --accent-6: #10b981;
+    --muted: #9aa0a6;
+    --border: #1f1f1f;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+header {
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-5));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  font-family: var(--font-mono);
+}
+
+.nav-links a {
+  color: var(--fg);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::before {
+  content: "[ ";
+  color: var(--muted);
+}
+
+.nav-links a::after {
+  content: " ]";
+  color: var(--muted);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent-2);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--fg);
+  font-size: 1.5rem;
+  cursor: pointer;
+  font-family: var(--font-mono);
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    flex-direction: column;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+.ascii-box {
+  font-family: var(--font-mono);
+  white-space: pre;
+  margin: 2rem 0;
+  font-size: 0.85rem;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.ascii-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.color-1 { color: var(--accent-1); }
+.color-2 { color: var(--accent-2); }
+.color-3 { color: var(--accent-3); }
+.color-4 { color: var(--accent-4); }
+.color-5 { color: var(--accent-5); }
+.color-6 { color: var(--accent-6); }
+
+section {
+  margin: 3rem 0;
+}
+
+section h2 {
+  font-family: var(--font-mono);
+  margin-bottom: 1rem;
+  color: var(--accent-1);
+  font-size: 1.8rem;
+}
+
+section h3 {
+  font-family: var(--font-mono);
+  margin: 2rem 0 1rem;
+  color: var(--accent-5);
+}
+
+section p {
+  max-width: 70ch;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.placeholder-note {
+  background: var(--border);
+  border-left: 4px solid var(--accent-4);
+  padding: 1rem;
+  margin: 1rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--accent-4);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.skill-item {
+  border: 2px solid var(--border);
+  padding: 1rem;
+  text-align: center;
+  font-family: var(--font-mono);
+  transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+  border-color: var(--accent-2);
+  transform: translateY(-3px);
+}
+
+.contact-links {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.contact-links a {
+  color: var(--accent-2);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  transition: color 0.3s ease;
+}
+
+.contact-links a:hover {
+  color: var(--accent-3);
+}
+
+.contact-links a::before {
+  content: "→ ";
+}
+
+footer {
+  margin-top: 4rem;
+  padding: 1.5rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+@media (max-width: 768px) {
+  .ascii-box {
+    font-size: 0.6rem;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <h1 class="logo">JackMcGrath</h1>
+      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section>
+      <pre class="ascii-box color-2">
+   ___   ___  ____  __  __ _____ 
+  / _ \ | _ )/ () \|  \/  |_   _|
+ | |_| || _ (\_()_/ |    |  | |  
+ |___(_)|___/ |_||_/|__|  |_|    
+</pre>
+      <h2>&lt; About Me /&gt;</h2>
+      
+      <div class="placeholder-note">
+        ⚠️ PLACEHOLDER: Replace this section with your personal introduction, background story, 
+        what got you into tech, your current focus, etc.
+      </div>
+      
+      <p>
+        Hi! I'm Jack McGrath, a [YOUR ROLE/DESCRIPTION HERE] based in [LOCATION]. 
+        I'm passionate about [INTERESTS], and I love tinkering with [TECHNOLOGIES/HOBBIES].
+      </p>
+      
+      <p>
+        [Add more paragraphs about your journey, what drives you, your philosophy on tech/life, etc.]
+      </p>
+    </section>
+
+    <section>
+      <h3>&lt; Skills & Technologies /&gt;</h3>
+      
+      <div class="placeholder-note">
+        ⚠️ PLACEHOLDER: Add your actual skills and technologies below. 
+        Categories could be: Languages, Frameworks, DevOps, Homelab, etc.
+      </div>
+      
+      <div class="skills-grid">
+        <div class="skill-item color-1">
+          <span>🐍 Python</span>
+        </div>
+        <div class="skill-item color-3">
+          <span>🌐 JavaScript</span>
+        </div>
+        <div class="skill-item color-5">
+          <span>🐳 Docker</span>
+        </div>
+        <div class="skill-item color-6">
+          <span>☸️ Kubernetes</span>
+        </div>
+        <div class="skill-item color-4">
+          <span>🔧 Linux</span>
+        </div>
+        <div class="skill-item color-2">
+          <span>🏠 Homelab</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <pre class="ascii-box color-3">
+┌──────────────────────────────────────┐
+│ "Code is like humor. When you have   │
+│  to explain it, it's bad."           │
+│                      - Cory House    │
+└──────────────────────────────────────┘
+</pre>
+    </section>
+
+    <section>
+      <h3>&lt; Interests /&gt;</h3>
+      
+      <div class="placeholder-note">
+        ⚠️ PLACEHOLDER: Add your hobbies, interests, things you're currently learning, etc.
+      </div>
+      
+      <p>
+        When I'm not working on tech projects, you can find me [HOBBY 1], [HOBBY 2], 
+        or [HOBBY 3]. I'm currently learning [LEARNING TOPIC] and exploring [INTEREST AREA].
+      </p>
+    </section>
+
+    <section>
+      <h3>&lt; Get In Touch /&gt;</h3>
+      
+      <div class="placeholder-note">
+        ⚠️ PLACEHOLDER: Add your actual contact links below (GitHub, LinkedIn, Email, etc.)
+      </div>
+      
+      <div class="contact-links">
+        <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+        <a href="mailto:your.email@example.com">Email</a>
+        <a href="https://twitter.com/yourhandle" target="_blank">Twitter</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Jack McGrath · Built with GitHub Pages</p>
+  </footer>
+
+  <script>
+    "use strict";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      if (menuToggle) {
+        menuToggle.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+      }
+
+      const asciiBlocks = document.querySelectorAll(".ascii-box");
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+
+      asciiBlocks.forEach(block => {
+        observer.observe(block);
+      });
+    });
+  </script>
+</body>
+</html>
