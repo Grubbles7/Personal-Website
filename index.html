@@ -1,410 +1,308 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Jack McGrath - Tech Portfolio, Homelab Documentation & Personal Blog" />
-  <title>Jack McGrath | Home</title>
-  <style>
-/* ==============================
-   CSS Variables
-================================ */
-:root {
-  --bg: #f4f6f8;
-  --fg: #1e1e1e;
-  --accent-1: #007acc;
-  --accent-2: #00ffd5;
-  --accent-3: #ff6b6b;
-  --accent-4: #ffd93d;
-  --accent-5: #a855f7;
-  --accent-6: #10b981;
-  --muted: #666;
-  --border: #e0e0e0;
-  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", "Courier New", monospace;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #000000;
-    --fg: #e6e6e6;
-    --accent-1: #0098ff;
-    --accent-2: #00ffd5;
-    --accent-3: #ff6b6b;
-    --accent-4: #ffd93d;
-    --accent-5: #a855f7;
-    --accent-6: #10b981;
-    --muted: #9aa0a6;
-    --border: #1f1f1f;
-  }
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: var(--font-main);
-  background-color: var(--bg);
-  color: var(--fg);
-  line-height: 1.6;
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 1.5rem;
-}
-
-/* ==============================
-   Header / Nav
-================================ */
-header {
-  border-bottom: 1px solid var(--border);
-  background: var(--bg);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo {
-  font-family: var(--font-mono);
-  font-size: 1.2rem;
-  background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-5));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-  font-family: var(--font-mono);
-}
-
-.nav-links a {
-  color: var(--fg);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.nav-links a::before {
-  content: "[ ";
-  color: var(--muted);
-}
-
-.nav-links a::after {
-  content: " ]";
-  color: var(--muted);
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--accent-2);
-}
-
-/* Mobile Menu */
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--fg);
-  font-size: 1.5rem;
-  cursor: pointer;
-  font-family: var(--font-mono);
-}
-
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-  
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--bg);
-    flex-direction: column;
-    padding: 1rem;
-    border-bottom: 1px solid var(--border);
-  }
-  
-  .nav-links.active {
-    display: flex;
-  }
-}
-
-/* ==============================
-   ASCII Art Sections
-================================ */
-.ascii-box {
-  font-family: var(--font-mono);
-  white-space: pre;
-  margin: 2rem 0;
-  font-size: 0.85rem;
-  line-height: 1.2;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.ascii-box.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.color-1 { color: var(--accent-1); }
-.color-2 { color: var(--accent-2); }
-.color-3 { color: var(--accent-3); }
-.color-4 { color: var(--accent-4); }
-.color-5 { color: var(--accent-5); }
-.color-6 { color: var(--accent-6); }
-
-.ascii-gradient {
-  background: linear-gradient(90deg, 
-    var(--accent-1), 
-    var(--accent-2), 
-    var(--accent-5), 
-    var(--accent-3)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ==============================
-   Hero Section
-================================ */
-.hero {
-  text-align: center;
-  padding: 3rem 0;
-}
-
-.hero h2 {
-  font-family: var(--font-mono);
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--accent-2);
-}
-
-.hero p {
-  max-width: 60ch;
-  margin: 0 auto 2rem;
-  color: var(--muted);
-}
-
-/* ==============================
-   Quick Links Grid
-================================ */
-.quick-links {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin: 3rem 0;
-}
-
-.link-card {
-  border: 2px solid var(--border);
-  padding: 2rem;
-  text-align: center;
-  transition: all 0.3s ease;
-  background: var(--bg);
-}
-
-.link-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--accent-2);
-  box-shadow: 0 8px 16px rgba(0, 255, 213, 0.2);
-}
-
-.link-card .icon {
-  font-family: var(--font-mono);
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  display: block;
-}
-
-.link-card h3 {
-  font-family: var(--font-mono);
-  margin-bottom: 0.5rem;
-  color: var(--fg);
-}
-
-.link-card p {
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.link-card a {
-  color: inherit;
-  text-decoration: none;
-  display: block;
-}
-
-/* ==============================
-   Content Sections
-================================ */
-section {
-  margin: 3rem 0;
-}
-
-section h2 {
-  font-family: var(--font-mono);
-  margin-bottom: 1rem;
-  color: var(--fg);
-}
-
-section p {
-  max-width: 70ch;
-  color: var(--muted);
-  margin-bottom: 1rem;
-}
-
-/* ==============================
-   Footer
-================================ */
-footer {
-  margin-top: 4rem;
-  padding: 1.5rem;
-  border-top: 1px solid var(--border);
-  text-align: center;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-/* ==============================
-   Responsive
-================================ */
-@media (max-width: 768px) {
-  .ascii-box {
-    font-size: 0.6rem;
-  }
-  
-  .quick-links {
-    grid-template-columns: 1fr;
-  }
-}
-  </style>
+  <meta name="description" content="Jack McGrath — Hardware technician transitioning into software development. Perth, Australia." />
+  <title>Jack McGrath — Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <nav class="container">
-      <h1 class="logo">JackMcGrath</h1>
-      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="blog.html">Blog</a></li>
-      </ul>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ NAV ============ -->
+  <header id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-mark" aria-label="Jack McGrath, home">JM<span class="nav-mark-dot">_</span></a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about"><span class="nav-idx">01</span>About</a>
+        <a href="#skills"><span class="nav-idx">02</span>Skills</a>
+        <a href="#projects"><span class="nav-idx">03</span>Projects</a>
+        <a href="#contact"><span class="nav-idx">04</span>Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark theme">
+          <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+        </button>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav-links-mobile" id="mobileNav" aria-label="Mobile">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <pre class="ascii-box ascii-gradient">
-██╗  ██╗ ██████╗ ███╗   ███╗███████╗
-██║  ██║██╔═══██╗████╗ ████║██╔════╝
-███████║██║   ██║██╔████╔██║█████╗
-██╔══██║██║   ██║██║╚██╔╝██║██╔══╝
-██║  ██║╚██████╔╝██║ ╚═╝ ██║███████╗
-╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
-</pre>
-      <h2>&lt; Welcome to my digital space /&gt;</h2>
-      <p>
-        Tech enthusiast, homelab tinkerer, and occasional blogger. 
-        This is where I document projects, share knowledge, and experiment with ideas.
-      </p>
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section id="home" class="hero">
+      <div class="hero-orb" id="heroOrb" aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <p class="hero-eyebrow">// Perth, Western Australia</p>
+        <h1 class="hero-title">Jack McGrath</h1>
+        <p class="hero-role">
+          <span id="typing-text"></span><span class="typing-cursor" aria-hidden="true">|</span>
+        </p>
+        <p class="hero-desc">
+          Three years spent diagnosing hardware down to the socket and the trace.
+          Now pointing that same instinct at code — building toward a career as a software developer.
+        </p>
+
+        <div class="hero-links">
+          <a href="https://github.com/Grubbles7" class="btn btn-primary" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:your.email@example.com" class="btn btn-ghost">Email</a>
+          <a href="#" class="btn btn-ghost" id="linkedinLink" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
+        <span>scroll</span>
+        <span class="scroll-cue-line"></span>
+      </a>
     </section>
 
-    <div class="quick-links">
-      <div class="link-card">
-        <a href="about.html">
-          <span class="icon color-1">👤</span>
-          <h3>About Me</h3>
-          <p>Learn about my background, skills, and interests</p>
-        </a>
-      </div>
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="section reveal">
+      <div class="container">
+        <p class="section-eyebrow">01 / About</p>
+        <h2 class="section-title">From the bench to the codebase</h2>
 
-      <div class="link-card">
-        <a href="portfolio.html">
-          <span class="icon color-3">⚡</span>
-          <h3>Portfolio</h3>
-          <p>Check out my projects and homelab setup</p>
-        </a>
-      </div>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              After three-plus years building and troubleshooting PC systems in Perth, I'm redirecting that
+              problem-solving toward software. I spend my evenings and weekends building real projects in
+              C#, ASP.NET Core, and JavaScript — not just working through tutorials.
+            </p>
+            <p>
+              Hardware taught me to think in systems: what's upstream, what's downstream, and where the
+              actual fault lives versus where the symptom shows up. That's the same instinct I bring to
+              debugging code — I just swapped a multimeter for a debugger.
+            </p>
+            <p>
+              I run a small homelab (five-plus machines, self-hosted services, a custom Arch/Hyprland
+              desktop) as a place to keep learning by building — and it doubles as a proving ground for
+              everything below.
+            </p>
+          </div>
 
-      <div class="link-card">
-        <a href="blog.html">
-          <span class="icon color-5">📝</span>
-          <h3>Blog</h3>
-          <p>Technical notes, tutorials, and random thoughts</p>
-        </a>
+          <ol class="timeline">
+            <li class="timeline-item">
+              <div class="timeline-year">2021 — 2024</div>
+              <div class="timeline-body">
+                <h3>Computer Technician</h3>
+                <p>Hardware diagnostics &amp; repair, PC building and optimisation, customer-facing technical support.</p>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-year">2024 — Present</div>
+              <div class="timeline-body">
+                <h3>Software Development, self-directed</h3>
+                <p>Building a portfolio in C#, ASP.NET Core &amp; JavaScript. Studying for Azure AZ-900.</p>
+              </div>
+            </li>
+            <li class="timeline-item timeline-item-active">
+              <div class="timeline-year">Now</div>
+              <div class="timeline-body">
+                <h3>Actively looking</h3>
+                <p>Open to junior developer roles and contract work in and around Perth.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
       </div>
-    </div>
-
-    <section>
-      <pre class="ascii-box color-2">
-┌─────────────────────────────────────┐
-│  CURRENTLY WORKING ON:              │
-│  • Expanding homelab infrastructure │
-│  • Learning new technologies        │
-│  • Building cool stuff              │
-└─────────────────────────────────────┘
-</pre>
     </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section id="skills" class="section reveal">
+      <div class="container">
+        <p class="section-eyebrow">02 / Skills</p>
+        <h2 class="section-title">What I know, what I'm learning</h2>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Hardware &amp; systems</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">PC diagnostics</span>
+              <span class="skill-tag">Custom PC builds</span>
+              <span class="skill-tag">Linux (Arch / Hyprland)</span>
+              <span class="skill-tag">Arduino</span>
+              <span class="skill-tag">ESP32</span>
+              <span class="skill-tag">Raspberry Pi</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>Tools &amp; platforms</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Git &amp; GitHub</span>
+              <span class="skill-tag">VS Code</span>
+              <span class="skill-tag">Obsidian</span>
+              <span class="skill-tag">Docker</span>
+            </div>
+          </div>
+
+          <div class="skill-card skill-card-learning">
+            <h3>Currently learning</h3>
+            <div class="skill-tags">
+              <span class="skill-tag skill-tag-learning">C#</span>
+              <span class="skill-tag skill-tag-learning">ASP.NET Core</span>
+              <span class="skill-tag skill-tag-learning">JavaScript</span>
+              <span class="skill-tag skill-tag-learning">React</span>
+              <span class="skill-tag skill-tag-learning">Azure</span>
+              <span class="skill-tag skill-tag-learning">Python</span>
+            </div>
+          </div>
+
+          <div class="skill-card skill-card-cert">
+            <h3>Certifications</h3>
+            <div class="skill-tags">
+              <span class="skill-tag skill-tag-cert">AZ-900 — in progress</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="section reveal">
+      <div class="container">
+        <p class="section-eyebrow">03 / Projects</p>
+        <h2 class="section-title">Things I've built</h2>
+
+        <div class="bento-grid">
+
+          <article class="project-card project-card-lg" data-stagger="0">
+            <div class="project-status status-progress">In progress</div>
+            <h3>DIY Raspberry Pi E-Reader &amp; Note-Taking Tablet</h3>
+            <p>A Kindle-style reader that boots straight into KOReader, with stylus-based note-taking via
+               Xournal++, cloud sync, and a custom 3D-printed enclosure — hardware and software built as one piece.</p>
+            <div class="project-tags">
+              <span class="tag">Raspberry Pi 3</span>
+              <span class="tag">Python</span>
+              <span class="tag">KOReader</span>
+              <span class="tag">3D printing</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Grubbles7" target="_blank" rel="noopener">Repository →</a>
+            </div>
+          </article>
+
+          <article class="project-card" data-stagger="1">
+            <div class="project-status status-done">Complete</div>
+            <h3>Hyprland Desktop (Omarchy)</h3>
+            <p>Fully customised Arch Linux + Hyprland setup — Waybar modules, a pie-menu launcher, and
+               per-device input configuration.</p>
+            <div class="project-tags">
+              <span class="tag">Arch Linux</span>
+              <span class="tag">Wayland</span>
+              <span class="tag">Shell scripting</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Grubbles7" target="_blank" rel="noopener">Repository →</a>
+            </div>
+          </article>
+
+          <article class="project-card" data-stagger="2">
+            <div class="project-status status-progress">In progress</div>
+            <h3>Open Claw — self-hosted AI agent</h3>
+            <p>A local, multi-node AI agent system for autonomous task execution, running on homelab
+               hardware rather than the cloud.</p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Local LLM</span>
+              <span class="tag">Multi-node</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Grubbles7" target="_blank" rel="noopener">Repository →</a>
+            </div>
+          </article>
+
+          <article class="project-card" data-stagger="3">
+            <div class="project-status status-done">Complete</div>
+            <h3>Obsidian Vault System</h3>
+            <p>A knowledge-management setup with a DataviewJS dashboard, Kanban task tracking, and a
+               fully cross-linked hardware inventory.</p>
+            <div class="project-tags">
+              <span class="tag">DataviewJS</span>
+              <span class="tag">Markdown</span>
+              <span class="tag">Automation</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="link-disabled">Private vault</a>
+            </div>
+          </article>
+
+          <article class="project-card project-card-wide" data-stagger="4">
+            <div class="project-status status-planned">Planned</div>
+            <h3>Learning Progress Tracker API</h3>
+            <p>A REST API for logging study sessions, course progress, and certifications — the first real
+               project built to learn ASP.NET Core, Entity Framework Core, and Swagger/OpenAPI by doing.</p>
+            <div class="project-tags">
+              <span class="tag">ASP.NET Core</span>
+              <span class="tag">EF Core</span>
+              <span class="tag">SQLite</span>
+              <span class="tag">Swagger</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Grubbles7" target="_blank" rel="noopener">Repository →</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="section reveal">
+      <div class="container">
+        <p class="section-eyebrow">04 / Contact</p>
+        <h2 class="section-title">Let's talk</h2>
+        <p class="contact-intro">
+          I'm actively looking for junior developer roles in Perth. If you've got a hardware-brained
+          developer-shaped hole on your team, I'd like to hear about it.
+        </p>
+
+        <div class="contact-grid">
+          <a class="contact-card" href="mailto:your.email@example.com">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">your.email@example.com</span>
+          </a>
+          <a class="contact-card" href="https://github.com/Grubbles7" target="_blank" rel="noopener">
+            <span class="contact-label">GitHub</span>
+            <span class="contact-value">github.com/Grubbles7</span>
+          </a>
+          <a class="contact-card" href="#" id="linkedinCard" target="_blank" rel="noopener">
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value">add your profile URL</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer>
-    <p>© 2026 Jack McGrath · Built with GitHub Pages</p>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2026 Jack McGrath</span>
+      <span class="footer-sep">·</span>
+      <span>Built by hand, hosted on GitHub Pages</span>
+    </div>
   </footer>
 
-  <script>
-    "use strict";
-
-    document.addEventListener("DOMContentLoaded", () => {
-      console.log("Portfolio loaded");
-
-      // Mobile menu toggle
-      const menuToggle = document.querySelector(".menu-toggle");
-      const navLinks = document.querySelector(".nav-links");
-
-      if (menuToggle) {
-        menuToggle.addEventListener("click", () => {
-          navLinks.classList.toggle("active");
-        });
-      }
-
-      // Animate ASCII elements on scroll
-      const asciiBlocks = document.querySelectorAll(".ascii-box");
-
-      const observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            }
-          });
-        },
-        { threshold: 0.3 }
-      );
-
-      asciiBlocks.forEach(block => {
-        observer.observe(block);
-      });
-    });
-  </script>
+  <script src="js/main.js"></script>
 </body>
 </html>
