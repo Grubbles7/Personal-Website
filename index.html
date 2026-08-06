@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Jack McGrath — hardware technician turned software developer. Perth, Australia." />
+<title>JM_ — Jack McGrath</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ TOP BAR ============ -->
+<header id="topbar">
+  <div class="topbar-inner">
+    <a href="#home" class="mark">JM<span class="mark-dot">_</span></a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#work">WORK</a><span class="slash">/</span>
+      <a href="#status">STATUS</a><span class="slash">/</span>
+      <a href="#approach">APPROACH</a><span class="slash">/</span>
+      <a href="#contact">CONTACT</a>
+    </nav>
+
+    <div class="topbar-right">
+      <div class="sys-readout">
+        <span id="clock">--:--:--</span>
+        <span class="sys-readout-label">AWST</span>
+      </div>
+      <a href="#contact" class="btn-solid">GET IN TOUCH ↗</a>
+      <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
+    <a href="#work">WORK</a>
+    <a href="#status">STATUS</a>
+    <a href="#approach">APPROACH</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section id="home" class="hero">
+    <span class="corner-mark corner-tl">+</span>
+    <span class="corner-mark corner-tr">+</span>
+
+    <div class="hero-grid">
+      <div class="hero-left">
+        <p class="section-tag"><span class="section-tag-num">/01</span> INTRODUCTION</p>
+        <h1 class="hero-title">HARDWARE<br>TO<br>CODEBASE.</h1>
+        <p class="hero-sub">RAW DIAGNOSTICS. SYSTEMS THINKING. NO SOFT TONES.</p>
+        <p class="hero-desc">
+          Three-plus years finding faults down to the trace and the socket, in Perth, Western Australia.
+          Now pointed at software — building real, working projects in C#, ASP.NET Core, and JavaScript,
+          one commit at a time.
+        </p>
+        <div class="hero-actions">
+          <a href="#work" class="btn-solid btn-lg">EXPLORE WORK ↗</a>
+          <a href="#contact" class="btn-ghost btn-lg">CONTACT <span class="bracket">[ ]</span></a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="terminal-panel">
+          <div class="terminal-head">
+            <span class="dot-blink"></span> STATUS: OPEN TO WORK
+            <span class="terminal-scn">//NODE_JM</span>
+          </div>
+          <dl class="terminal-rows">
+            <div class="terminal-row"><dt>LOCATION</dt><dd>PERTH, AU</dd></div>
+            <div class="terminal-row"><dt>COORD</dt><dd>-31.9523, 115.8613</dd></div>
+            <div class="terminal-row"><dt>ROLE</dt><dd>TECHNICIAN → DEVELOPER</dd></div>
+            <div class="terminal-row"><dt>FOCUS</dt><dd>C# / ASP.NET / JS</dd></div>
+            <div class="terminal-row"><dt>EXPERIENCE</dt><dd>3+ YRS HARDWARE</dd></div>
+            <div class="terminal-row"><dt>TIMEZONE</dt><dd>UTC+8</dd></div>
+          </dl>
+          <div class="terminal-foot">
+            <span id="typing-line"></span><span class="caret">_</span>
+          </div>
+        </div>
+        <span class="tag-chip tag-chip-1">EXP.03</span>
+        <span class="tag-chip tag-chip-2">SCN_01</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ APPROACH ============ -->
+  <section id="approach" class="section reveal">
+    <div class="container">
+      <p class="section-tag"><span class="section-tag-num">/02</span> APPROACH</p>
+      <h2 class="section-title">HOW I WORK</h2>
+
+      <div class="approach-grid">
+        <div class="approach-card">
+          <span class="approach-icon" aria-hidden="true">◇</span>
+          <h3>DIAGNOSE FIRST</h3>
+          <p>Find the actual fault before touching anything. Symptom and cause are rarely the same place.</p>
+        </div>
+        <div class="approach-card">
+          <span class="approach-icon" aria-hidden="true">▦</span>
+          <h3>SYSTEMS THINKING</h3>
+          <p>Every board, every service, every function sits inside a bigger system. Trace the whole chain.</p>
+        </div>
+        <div class="approach-card">
+          <span class="approach-icon" aria-hidden="true">✕</span>
+          <h3>DOCUMENT EVERYTHING</h3>
+          <p>If it's not written down, it didn't happen. Notes outlive memory — and outlive me on a project.</p>
+        </div>
+        <div class="approach-card">
+          <span class="approach-icon" aria-hidden="true">◈</span>
+          <h3>SHIP REAL THINGS</h3>
+          <p>Tutorials teach syntax. Only finished, working projects teach how software actually behaves.</p>
+        </div>
+        <div class="approach-card">
+          <span class="approach-icon" aria-hidden="true">▣</span>
+          <h3>OWN THE WHOLE STACK</h3>
+          <p>Comfortable from the physical board up through the OS to the application. No layer is a black box.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SELECTED WORK ============ -->
+  <section id="work" class="section reveal">
+    <div class="container">
+      <p class="section-tag"><span class="section-tag-num">/03</span> SELECTED WORK</p>
+      <h2 class="section-title">PROJECTS</h2>
+
+      <div class="work-grid">
+
+        <article class="work-card">
+          <div class="work-thumb work-thumb-1" aria-hidden="true">
+            <span class="work-thumb-tag">P_01</span>
+          </div>
+          <div class="work-card-body">
+            <div class="work-card-head">
+              <h3>PI E-READER &amp; NOTE TABLET</h3>
+              <a href="https://github.com/Grubbles7" target="_blank" rel="noopener" aria-label="View repository" class="work-arrow">↗</a>
+            </div>
+            <p class="work-cat">HARDWARE / PYTHON — IN PROGRESS</p>
+            <p class="work-desc">Kindle-style e-reader on Raspberry Pi 3, boots into KOReader with stylus note-taking via Xournal++ and a custom 3D-printed enclosure.</p>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-thumb work-thumb-2" aria-hidden="true">
+            <span class="work-thumb-tag">P_02</span>
+          </div>
+          <div class="work-card-body">
+            <div class="work-card-head">
+              <h3>HYPRLAND DESKTOP</h3>
+              <a href="https://github.com/Grubbles7" target="_blank" rel="noopener" aria-label="View repository" class="work-arrow">↗</a>
+            </div>
+            <p class="work-cat">ARCH LINUX / SHELL — COMPLETE</p>
+            <p class="work-desc">Fully custom Omarchy build — Waybar modules, launcher theming, per-device input rules.</p>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-thumb work-thumb-3" aria-hidden="true">
+            <span class="work-thumb-tag">P_03</span>
+          </div>
+          <div class="work-card-body">
+            <div class="work-card-head">
+              <h3>OPEN CLAW</h3>
+              <a href="https://github.com/Grubbles7" target="_blank" rel="noopener" aria-label="View repository" class="work-arrow">↗</a>
+            </div>
+            <p class="work-cat">PYTHON / LOCAL LLM — IN PROGRESS</p>
+            <p class="work-desc">Self-hosted, multi-node AI agent system for autonomous tasks, running on homelab hardware instead of the cloud.</p>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-thumb work-thumb-4" aria-hidden="true">
+            <span class="work-thumb-tag">P_04</span>
+          </div>
+          <div class="work-card-body">
+            <div class="work-card-head">
+              <h3>OBSIDIAN VAULT SYSTEM</h3>
+              <span class="work-arrow work-arrow-disabled" aria-hidden="true">—</span>
+            </div>
+            <p class="work-cat">DATAVIEWJS / MARKDOWN — COMPLETE</p>
+            <p class="work-desc">Knowledge-management setup with a live DataviewJS dashboard, Kanban task tracking, and a cross-linked hardware inventory.</p>
+          </div>
+        </article>
+
+        <article class="work-card work-card-wide">
+          <div class="work-thumb work-thumb-5" aria-hidden="true">
+            <span class="work-thumb-tag">P_05</span>
+          </div>
+          <div class="work-card-body">
+            <div class="work-card-head">
+              <h3>LEARNING PROGRESS TRACKER API</h3>
+              <a href="https://github.com/Grubbles7" target="_blank" rel="noopener" aria-label="View repository" class="work-arrow">↗</a>
+            </div>
+            <p class="work-cat">ASP.NET CORE / EF CORE / SQLITE — PLANNED</p>
+            <p class="work-desc">A REST API for logging study sessions, course progress, and certifications — first real project for learning ASP.NET Core, Entity Framework, and Swagger by doing rather than following a tutorial.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SYSTEM STATUS ============ -->
+  <section id="status" class="section reveal">
+    <div class="container">
+      <p class="section-tag"><span class="section-tag-num">/04</span> SYSTEM STATUS</p>
+      <h2 class="section-title">SKILLS &amp; PROGRESS</h2>
+
+      <div class="status-panel">
+        <div class="status-bars">
+          <div class="status-row">
+            <span class="status-label">HARDWARE DIAGNOSTICS</span>
+            <span class="status-bar"><span class="status-fill" style="--pct:95%"></span></span>
+            <span class="status-pct">95%</span>
+          </div>
+          <div class="status-row">
+            <span class="status-label">LINUX / SYSTEMS ADMIN</span>
+            <span class="status-bar"><span class="status-fill" style="--pct:80%"></span></span>
+            <span class="status-pct">80%</span>
+          </div>
+          <div class="status-row">
+            <span class="status-label">C# / ASP.NET CORE</span>
+            <span class="status-bar"><span class="status-fill" style="--pct:45%"></span></span>
+            <span class="status-pct">45%</span>
+          </div>
+          <div class="status-row">
+            <span class="status-label">JAVASCRIPT</span>
+            <span class="status-bar"><span class="status-fill" style="--pct:40%"></span></span>
+            <span class="status-pct">40%</span>
+          </div>
+          <div class="status-row">
+            <span class="status-label">PYTHON</span>
+            <span class="status-bar"><span class="status-fill" style="--pct:35%"></span></span>
+            <span class="status-pct">35%</span>
+          </div>
+        </div>
+
+        <div class="status-meta">
+          <div class="status-meta-row"><span>UPTIME</span><span>3+ YRS IN THE FIELD</span></div>
+          <div class="status-meta-row"><span>CERTIFICATION</span><span>AZ-900 — IN PROGRESS</span></div>
+          <div class="status-meta-row"><span>CURRENTLY LEARNING</span><span>C#, ASP.NET, REACT, AZURE</span></div>
+          <div class="status-ok">● ACTIVELY LOOKING — OPEN TO WORK</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="section reveal">
+    <div class="container">
+      <p class="section-tag"><span class="section-tag-num">/05</span> CONTACT</p>
+
+      <div class="cta-block">
+        <div class="cta-text">
+          <h2 class="section-title">LET'S BUILD<br>SOMETHING.</h2>
+          <p>Looking for junior developer roles and contract work in and around Perth. If there's a hardware-brained, detail-obsessed developer shaped hole on your team — reach out.</p>
+        </div>
+        <div class="cta-links">
+          <a class="contact-row" href="mailto:your.email@example.com">
+            <span>EMAIL</span><span class="contact-value">your.email@example.com</span>
+          </a>
+          <a class="contact-row" href="https://github.com/Grubbles7" target="_blank" rel="noopener">
+            <span>GITHUB</span><span class="contact-value">github.com/Grubbles7</span>
+          </a>
+          <a class="contact-row" href="#" id="linkedinRow">
+            <span>LINKEDIN</span><span class="contact-value">add your profile URL</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-top">
+    <div class="footer-col">
+      <a href="#home" class="mark">JM<span class="mark-dot">_</span></a>
+      <p class="footer-loc">PERTH, WESTERN AUSTRALIA<br>UTC+8</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">NAVIGATION</p>
+      <a href="#work">Work</a>
+      <a href="#status">Status</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">ELSEWHERE</p>
+      <a href="https://github.com/Grubbles7" target="_blank" rel="noopener">GitHub</a>
+      <a href="#" id="linkedinFooter">LinkedIn</a>
+    </div>
+  </div>
+  <div class="barcode-strip" aria-hidden="true">
+    <span class="barcode"></span>
+    <span class="barcode-label">BUILD 2026.08 // PERTH_AU // JM_01</span>
+  </div>
+  <div class="status-ticker">
+    <span>● CONNECTION SECURE</span>
+    <span class="ticker-mid">© 2026 JACK MCGRATH — BUILT BY HAND</span>
+    <span>NODE: JM_01</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
